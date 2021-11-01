@@ -1,20 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
-posts =[
-    {
-        'name':'Vishnu Balaji',
-        'age':21
-    },
-    {
-        'name':'PyTorcher',
-        'age':23
-    }
-]
+from .models import Post
 
 def home(request):
     context = {
-        'posts':posts,
+        'posts':Post.objects.all(),
         'title':'Django Home'
     }
     return render(request, 'polls/home.html', context)
